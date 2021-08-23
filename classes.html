@@ -1,0 +1,111 @@
+
+<!--
+This program is a page extention (from the main website Yoga For Happinness), called Book a Class. On this page user will be able to view a table with the following information: class name, date/time and price. And will allow a user to book a speific class, by filling in the form and submitting it.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head> <!-- This section has the title of the site, and includes a part of the BootStrap code that shows a logo and a nav bar-->
+		<title>Yoga For Happinness</title>
+		<link rel="stylesheet" href="style.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="logic.js" defer></script>
+		<meta name="description" content="Affordable yoga classes in UK and Ireland provided by proffesionals to cater for your needs. Also availible online.">
+		<meta name="keywords" content="affordable, yoga, cheap, uk, ireland, proffesional, proffesionals, health, mental, physical, meditation, online, body, mind">
+	</head>
+	<body>
+		<div class="content">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container-fluid">
+					<img class="navbar-brand" src="./images/LotusLogo.png" alt="Lotus logo" height="120">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link h4" href="index.html"><b>Home Page</b></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active h4" aria-current="page" href="classes.html"><b>Book a Class</b></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link h4" href="onlineYoga.html"><b>Online Yoga</b></a>
+							</li>
+							<li>
+								<a class="nav-link h4" href="faq.html"><b>FAQ</b></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<a class="anchor"></a> <!--this tag helps the page icon find its position on the page -->
+			<img class="page-icon" width="300px" src="./images/TimeManagement.png">
+			<table id="classesTable"> <!-- This is a tag that creates table with the filled in content (ie class name/date & time, and price -->
+				<tr>
+					<th class="border border-dark border-2 p-2">Name of Class</th>
+					<th class="border border-dark border-2 p-2">Time</th>
+					<th class="border border-dark border-2 p-2">Price</th>
+					<th class="border border-dark border-2 p-2">Register</th>
+				</tr>
+				<tr>
+					<td class="border border-dark border-2 p-2">Hatha Yoga (Tue & Thu)</td>
+					<td class="border border-dark border-2 p-2">19:30 - 20:30</td>
+					<td class="border border-dark border-2 p-2">€30</td>
+					<td class="border border-dark border-2 p-2"><button onclick="book(0)">Book</button></td>
+				</tr>
+				<tr>
+					<td class="border border-dark border-2 p-2">Restorative Yoga (Mon)</td>
+					<td class="border border-dark border-2 p-2">18:00 - 19:00</td>
+					<td class="border border-dark border-2 p-2">€45</td>
+					<td class="border border-dark border-2 p-2"><button onclick="book(1)">Book</button></td>
+				</tr>
+				<tr>
+					<td class="border border-dark border-2 p-2">Meditation & Mindfulness (Wed)</td>
+					<td class="border border-dark border-2 p-2">18:30 - 20:00</td>
+					<td class="border border-dark border-2 p-2">€25</td>
+					<td class="border border-dark border-2 p-2"><button onclick="book(2)">Book</button></td>
+				</tr>
+					<td class="border border-dark border-2 p-2">Online Yoga (Fri)</td>
+						<td class="border border-dark border-2 p-2">18:00-20:00</td>
+						<td class="border border-dark border-2 p-2">€15</td>
+						<td class="border border-dark border-2 p-2"><button onclick="book(2)">Book</button></td>
+					</tr>
+			</table>
+			
+			<div id="bookingForm"> <!--  This container has the form the customer needs to fill in in order to sign up for a class -->
+				<h4 id="infoText">You are now booking the class "<span id="className"></span>" at <span id="classTime"></span> for <span id="classPrice"></span></h4>
+				<h4 id="classBooked">Thanks for booking <span id="usersName"></span>. You should receive an email confirmation shortly.</h4>
+				<br />
+				<form id="classForm">
+					<label for="name">Name: </label>
+					<input id="name" type="text" /> <br />
+					<label for="country">Phone:</label>
+					<select id="country">
+						<option value="ie">Ireland (+353)</option>
+						<option value="uk">UK (+44)</option>
+					</select>
+					<input id="phnum" type="text" /> <br /> <br />
+					<input id="submit" type="submit" onclick="formsubmit(); return false;" /">
+				</form>
+			</div>
+		</div>
+		
+		<footer> <!-- this is the footer of the page that contais 'About us' section and the contact details  --> 
+			<a href="about.html">About Us</a>
+			<div>
+				<ul class="contact-info">
+					<li>Yoga For Happiness</li>
+					<ul>
+						<li>Block A</li>
+						<li>Strand St.</li>
+						<li>Dublin 2</li>
+						<li>(01) 641 9930</li>
+					</ul>
+				</ul>
+			</div>
+		</footer>
+	</body>
+</html>
